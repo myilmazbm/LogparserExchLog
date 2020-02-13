@@ -1,4 +1,31 @@
+<#
+ .Synopsis
+  Exchange Log dosyalarını hazırlayıp logparser dosyasına yazan script.
 
+ .Description
+  aşağıda hazır bulunan log dosyalarının linklerini yerel site'ta görsel logparser programının tmp dosyasına yazmak için kullanılır.
+
+ .Parameter Start
+  logların çekilme tarihlerini alır default olarak bugün seçilir.
+
+ .Parameter End
+  logların çekilme tarihlerini alır default olarak yarın seçilir.
+
+ .Parameter ADSite
+  Logların çekilmek istendiği site seçilir.
+ 
+ .Parameter
+  Diğer parametrelerden hangisi $true olursa onu logparser tmp dosyasına yazar
+ 
+ .Example
+   # HttpProxy Autodiscover log dosyalarının linklerini logparser tmp dosyasına yazar.
+   Set-LogparserFile -HttpProxyAutoDiscover $true
+
+ .Example
+   # 3 gün önceki loglardan başlayıp bugüne kadar alır.
+   Set-LogparserFile -HttpProxyAutoDiscover $true -Start ([DateTime]::Today).AddDays(-3) -End [DateTime]::Today
+
+#>
 
 [CmdletBinding(DefaultParameterSetName = "ALL")]
 param(
